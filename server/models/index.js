@@ -22,6 +22,7 @@ module.exports = {
         if (error) {
           callback(error, null);
         } else {
+          console.log('models/index.js post results-> ' + results);
           callback(null, results);
         }
       });

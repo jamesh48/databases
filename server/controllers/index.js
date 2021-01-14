@@ -10,7 +10,7 @@ module.exports = {
           // attach onto the response object the results
           res.writeHead(200);
           console.log('_____controller results-> ' + JSON.stringify(results));
-          res.end(results.text);
+          res.end(JSON.stringify(results));
         }
       });
     }, // a function which handles a get request for all messages
@@ -27,8 +27,10 @@ module.exports = {
 
   users: {
     // Ditto as above
-    get: function (req, res) {},
-    post: function (req, res) {}
+    get: function (req, res) {
+    },
+    post: function (req, res) {
+    }
   }
 };
 
