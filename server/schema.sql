@@ -26,18 +26,6 @@ USE chat;
 -- SET FOREIGN_KEY_CHECKS=0;
 
 -- ---
--- Table 'rooms'
--- ---
-
-DROP TABLE IF EXISTS `rooms`;
-
-CREATE TABLE `rooms` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
 -- Table 'messages'
 -- ---
 
@@ -46,9 +34,9 @@ DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `message` MEDIUMTEXT NOT NULL,
+  `rooms` VARCHAR(100) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `id_users` INTEGER NOT NULL,
-  `id_rooms` INTEGER NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -69,7 +57,6 @@ CREATE TABLE `users` (
 -- ---
 
 ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
-ALTER TABLE `messages` ADD FOREIGN KEY (id_rooms) REFERENCES `rooms` (`id`);
 
 -- ---
 -- Table Properties
