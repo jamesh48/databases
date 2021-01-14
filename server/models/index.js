@@ -1,4 +1,5 @@
 var db = require('../db');
+// should this be var db = require('../db').db; ???
 
 module.exports = {
   messages: {

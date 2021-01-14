@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS chat;
 CREATE DATABASE chat;
 
 USE chat;
@@ -33,10 +34,10 @@ DROP TABLE IF EXISTS `messages`;
 
 CREATE TABLE `messages` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `message` MEDIUMTEXT NOT NULL,
-  `rooms` VARCHAR(100) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL,
-  `id_users` INTEGER NOT NULL,
+  `text` MEDIUMTEXT NOT NULL,
+  `roomname` VARCHAR(100) NOT NULL,
+  `created_at` TIMESTAMP,
+  `id_users` INTEGER,
   PRIMARY KEY (`id`)
 );
 
@@ -72,7 +73,7 @@ ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
 
 -- INSERT INTO `rooms` (`id`,`name`) VALUES
 -- ('','');
--- INSERT INTO `messages` (`id`,`message`,`created_at`,`id_users`,`id_rooms`) VALUES
+-- INSERT INTO `messages` (`id`,`text`, `roomname`, `created_at`,`id_users`) VALUES
 -- ('','','','','');
 -- INSERT INTO `users` (`id`,`username`) VALUES
 -- ('','');
