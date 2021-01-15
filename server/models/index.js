@@ -1,53 +1,27 @@
 var db = require('../db').db;
-// should this be var db = require('../db').db; ???
 module.exports = {
   messages: {
-    // a function which produces all the messages
-    get: function (callback) {
-      console.log('models index.js messages/get');
-      db.query('SELECT * FROM messages', function(error, results, fields) {
-        if (error) {
-          callback(error, null);
-        } else {
-          console.log('_____model results-> ' + JSON.stringify(results));
-          callback(null, results);
-        }
+    get: function (cb) {
+      db.query('SELECT * FROM messages', function(err, results, fields) {
+        err ? cb(err) : cb(null, JSON.stringify(results));
       });
     },
-    post: function (data, callback) {
-      console.log('data-> ' + data);
-      // a function which can be used to insert a message into the database
-      console.log('models index.js messages/post');
-      db.query('INSERT INTO messages (roomname, user, text) VALUES (null, null, data.message)', function(error, results, fields) {
-        if (error) {
-          callback(error, null);
-        } else {
-          console.log('models/index.js post results-> ' + results);
-          callback(null, results);
-        }
+    post: function (data, cb) {
+      db.query(`INSERT INTO messages (text, roomname) VALUES (${JSON.stringify(data.message)}, ${JSON.stringify(data.roomname)})`, function(err, results, fields) {
+        err ? cb(err) : cb(null, JSON.stringify(data.message));
       });
-
     }
   },
 
   users: {
-    // Ditto as above.
-    get: function (callback) {
-      console.log('models index.js users/get');
-      db.query('SELECT * FROM users', function(error, results, fields) {
-        if (error) {
-          return callback(error, null);
-        }
-        return callback(null, results);
+    get: function (cb) {
+      db.query('SELECT * FROM users', function(err, results, fields) {
+        err ? cb(err) : cb(null, JSON.stringify(results));
       });
     },
-    post: function (data, callback) {
-      console.log('models index.js users/post');
-      db.query('INSERT INTO users (user) VALUES (data.username)', function(error, results, fields) {
-        if (error) {
-          return callback(error, null);
-        }
-        return callback(null, results);
+    post: function (data, cb) {
+      db.query(`INSERT INTO users (username) VALUES (${JSON.stringify(data.username)})`, function(err, results, fields) {
+        err ? cb(err) : cb(null, JSON.stringify(data.username));
       });
     }
   }

@@ -1,0 +1,250 @@
+body {
+    background: #eee;
+    text-align: center;
+    padding: 0 25px;
+    font-family: arial, sans-serif;
+}
+
+h4, h6, a {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: lightblue;
+}
+
+#main, #chats {
+    width: 500px;
+    margin: auto;
+    text-align: left;
+    background-color: skyblue;
+    padding: 50px 60px;
+    margin-bottom: 5px;
+    border: solid white;
+    border-width: 0 1px 1px 1px;
+    border-radius: 10px;
+
+}
+
+#main h1 {
+    margin-top: 0;
+    font-size: 35px;
+    margin-bottom: 5px;
+    padding: 5px;
+    color: white;
+    -webkit-text-stroke-width: .75px;
+    -webkit-text-stroke-color: black;
+}
+
+#main h1 span {
+    font-style:italic;
+}
+
+#main ul {
+    padding-left: 20px;
+}
+
+#main .error {
+    border: 1px solid red;
+    background: #FDEFF0;
+    padding: 20px;
+}
+
+#main .success {
+    margin-top: 25px;
+}
+
+#main .success code {
+    font-size: 12px;
+    color: green;
+    line-height: 13px;
+}
+
+form {
+    padding: 20px;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+form input[type=text] {
+    margin-right: 10px;
+    width: 70%;
+    font-size: 12px;
+    padding: 5px;
+}
+
+
+.username {
+    grid-area: username;
+}
+
+.message-div {
+    background-color: skyblue;
+    border: 1px solid black;
+    border-radius: 10px;
+    grid-area: message;
+}
+
+.message-div h4 {
+    color: white;
+}
+
+.roomname-div {
+    grid-area: roomname;
+}
+
+.created-at-div {
+    grid-area: time;
+}
+
+
+.chat {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 30% 40% 20% 10%;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "username"
+    "message"
+    "roomname"
+    "time";
+    background-color: white;
+    height: 200px;
+    padding: 10px;
+}
+
+.username:hover {
+    color: blue;
+}
+
+.chat:hover {
+    background-color: whitesmoke;
+}
+
+.spinner {
+    float: right;
+    height: 46px;
+    margin-bottom: 5px;
+}
+
+.spinner img {
+    padding: 10px;
+}
+
+.messageform {
+    background-color: lightblue;
+    border-radius: 10px;
+
+}
+
+#message {
+    position: relative;
+}
+
+#message, .submit {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+
+#rooms {
+background-color: lightblue;
+text-align: center;
+padding: 5px;
+margin-bottom: 5px;
+border-radius: 10px;
+}
+
+.add-room, .drop-down {
+    position: relative;
+    display: inline;
+    margin: 0 auto;
+}
+
+.add-room {
+    border-radius: 5px;
+    background-color: skyblue;
+    color: black;
+}
+
+.add-room:hover {
+    background-color: lightgreen;
+}
+
+.room-dec {
+    display: inline;
+    color: white;
+    font-size: 20px;
+    -webkit-text-stroke-width: .4px;
+    -webkit-text-stroke-color: black;
+}
+
+.submit {
+    margin-top: 5px;
+}
+
+.newForm {
+    background-color: lightsalmon;
+}
+
+
+
+.username, .message, .roomname, .created-at {
+    font-weight: 500;
+    color: darkslategrey;
+}
+
+ .message-div h4, .roomname-div h6, .created-at-div h6 {
+    position: relative;
+    left: 2.5%;
+    top: 10px;
+    border-radius: 5px;
+}
+
+.message {
+    font-size: 14px;
+}
+
+.roomname {
+    color: lightseagreen;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
+.created-at {
+    text-decoration: none;
+    font-weight: 300;
+    color: darkslategrey;
+}
+
+.friend {
+    font: helvetica;
+    color: white;
+    position: relative;
+    font-weight: 500;
+    color: #fff;
+    background-color: #0090da;
+    height: 40%;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.username {
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+.friend:hover {
+    color: yellow;
+}
+
+
+/* .cool-button {
+    position: relative;
+    display: inline-block;
+} */
