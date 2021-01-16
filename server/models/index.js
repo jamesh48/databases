@@ -16,21 +16,23 @@ module.exports = {
             cb(null, JSON.stringify(results));
           }
         )
-        .catch();
+        .catch( function(err) {
+          cb(err, null);
+        });
     },
     post: function (data, cb) {
       // TIMESTAMP	'0000-00-00 00:00:00'
-      const newDate = new Date();
-      const dd = newDate.getDate();
-      let mm = newDate.getMonth() + 1;
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      const yyyy = newDate.getUTCFullYear();
+      // const newDate = new Date();
+      // const dd = newDate.getDate();
+      // let mm = newDate.getMonth() + 1;
+      // if (mm < 10) {
+      //   mm = '0' + mm;
+      // }
+      // const yyyy = newDate.getUTCFullYear();
 
-      const hours = newDate.getHours();
-      const min = newDate.getMinutes();
-      const sec = newDate.getSeconds();
+      // const hours = newDate.getHours();
+      // const min = newDate.getMinutes();
+      // const sec = newDate.getSeconds();
 
       // let insertStr = `${yyyy}-${mm}-${dd} ${hours}:${min}:${sec}`;
       // let insertStr = new Date();
@@ -38,22 +40,39 @@ module.exports = {
       // db.query(`SELECT id FROM users WHERE username = ${data.username}`, function(err, results, fields) {
       //   console.log('results ' + results);
       // });
-      db.query(`INSERT INTO messages (text, roomname) VALUES (${JSON.stringify(data.message)}, ${JSON.stringify(data.roomname)})`, function(err, results, fields) {
-        err ? cb(err) : cb(null, JSON.stringify(data.message));
-      });
+      // db.query(`INSERT INTO messages (text, roomname) VALUES (${JSON.stringify(data.message)}, ${JSON.stringify(data.roomname)})`, function(err, results, fields) {
+      //   err ? cb(err) : cb(null, JSON.stringify(data.message));
+      // });
+
+      message.create({text: `${data.message}`, roomname: `${data.roomname}`})
+        .then(function() {
+          cb(null, JSON.stringify(data.message));
+        })
+        .catch(function(err) {
+          cb(err, null);
+        });
     }
   },
 
   users: {
     get: function (cb) {
-      db.query('SELECT * FROM users', function(err, results, fields) {
-        err ? cb(err) : cb(null, JSON.stringify(results));
-      });
+
+      // db.query('SELECT * FROM users', function(err, results, fields) {
+      //   err ? cb(err) : cb(null, JSON.stringify(results));
+      // });
     },
     post: function (data, cb) {
-      db.query(`INSERT INTO users (username) VALUES (${JSON.stringify(data.username)})`, function(err, results, fields) {
-        err ? cb(err) : cb(null, JSON.stringify(data.username));
-      });
+      user.create({'username': `${data.username}`})
+        .then(function() {
+          cb(null, JSON.stringify(data.username));
+        })
+        .catch( function() {
+          cb(err, null);
+        });
+      // db.query(`INSERT INTO users (username) VALUES (${JSON.stringify(data.username)})`, function(err, results, fields) {
+      //   err ? cb(err) : cb(null, JSON.stringify(data.username));
+      // });
+
     }
   }
 };

@@ -17,8 +17,8 @@ var User = db.define('User', {
 var Message = db.define('Message', {
   // userid: Sequelize.INTEGER,
   text: Sequelize.STRING,
-  roomname: Sequelize.STRING,
-  created_at: Sequelize.STRING
+  roomname: Sequelize.STRING
+
 });
 
 /* Sequelize comes with built in support for promises

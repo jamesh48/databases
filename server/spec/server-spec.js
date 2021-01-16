@@ -57,7 +57,7 @@ describe('Persistent Node Chat Server', function() {
           expect(results.length).to.equal(1);
 
           // TODO: If you don't have a column named text, change this test.
-          expect(results[0].dataValues.text).to.equal('In mercy\'s name, three days is all I need.');
+          expect(results[0].text).to.equal('In mercy\'s name, three days is all I need.');
 
           done();
         });
@@ -91,7 +91,7 @@ describe('Persistent Node Chat Server', function() {
     });
   });
 
-  it('should have timestamp "created-at"', function(done) {
+  it('should have timestamp "createdAt"', function(done) {
     request({
       method: 'POST',
       uri: 'http://127.0.0.1:3000/classes/users',
@@ -117,7 +117,8 @@ describe('Persistent Node Chat Server', function() {
 
         dbConnection.query(queryString, queryArgs, function(err, results) {
           // Should have one result:
-          expect(results[0].created_at).to.not.equal(null);
+          expect(results[0].createdAt).to.not.equal(null);
+          expect(results[0].createdAt).to.not.equal(undefined);
 
           // TODO: If you don't have a column named text, change this test.
           expect(results[0].text).to.equal('All in a good days work');
