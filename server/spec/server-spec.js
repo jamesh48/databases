@@ -17,10 +17,12 @@ describe('Persistent Node Chat Server', function() {
     dbConnection.connect();
 
     var tablename = 'messages';
+    var tablename2 = 'users';
 
     /* Empty the db table before each test so that multiple tests
      * (or repeated runs of the tests) won't screw each other up: */
-    dbConnection.query('truncate ' + tablename, done);
+    dbConnection.query('truncate ' + tablename);
+    dbConnection.query('truncate ' + tablename2, done);
   });
 
   afterEach(function() {
@@ -128,5 +130,33 @@ describe('Persistent Node Chat Server', function() {
       });
     });
   });
+
+  it('should get all the usernames from the database', function(done) {
+    request({
+      method: 'POST',
+      uri: 'http://127.0.0.1:3000/classes/users',
+      json: { username: 'Marco' }
+    }, function() {
+      request({
+        method: 'POST',
+        uri: 'http://127.0.0.1:3000/classes/users',
+        json: { username: 'Peet' }
+      }, function() {
+        var queryString = 'SELECT * FROM users';
+        var queryArgs = [];
+        dbConnection.query(queryString, queryArgs, function(err, results) {
+          // Should have two results:
+          expect(results.length).to.equal(2);
+          expect(results[0].username).to.equal('Marco');
+          expect(results[1].username).to.equal('Peet');
+
+          // // TODO: If you don't have a column named text, change this test.
+          // expect(results[0].text).to.equal('All in a good days work');
+          done();
+        });
+      });
+    });
+  });
+
 
 });

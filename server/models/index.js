@@ -56,7 +56,13 @@ module.exports = {
 
   users: {
     get: function (cb) {
-
+      user.findAll()
+        .then(function(results) {
+          cb(null, results);
+        })
+        .catch(function(err) {
+          cb(err, null);
+        });
       // db.query('SELECT * FROM users', function(err, results, fields) {
       //   err ? cb(err) : cb(null, JSON.stringify(results));
       // });

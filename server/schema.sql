@@ -60,7 +60,7 @@ CREATE TABLE `users` (
 -- Foreign Keys
 -- ---
 
-ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
+-- ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
 
 -- ---
 -- Table Properties
