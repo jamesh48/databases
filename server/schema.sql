@@ -35,8 +35,8 @@ DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `text` MEDIUMTEXT NOT NULL,
-  `roomname` VARCHAR(100) NOT NULL,
-  `created_at` TIMESTAMP,
+  `roomname` VARCHAR(100),
+  `created_at` VARCHAR(100),
   `id_users` INTEGER,
   PRIMARY KEY (`id`)
 );
