@@ -3,6 +3,7 @@ var models = require('../models');
 module.exports = {
   messages: {
     get: function (req, res) {
+      console.log('hello');
       models.messages.get((err, results) => {
         if (err) {
           throw err;
