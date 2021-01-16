@@ -36,7 +36,8 @@ CREATE TABLE `messages` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `text` MEDIUMTEXT NOT NULL,
   `roomname` VARCHAR(100),
-  `created_at` VARCHAR(100),
+  `createdAt` VARCHAR(100),
+  `updatedAt` VARCHAR(100),
   `id_users` INTEGER,
   PRIMARY KEY (`id`)
 );
@@ -50,6 +51,8 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
+  `createdAt` VARCHAR(100),
+  `updatedAt` VARCHAR(100),
   PRIMARY KEY (`id`)
 );
 
