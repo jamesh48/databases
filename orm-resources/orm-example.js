@@ -4,7 +4,7 @@
  */
 
 var Sequelize = require('sequelize');
-var db = new Sequelize('chat', 'root', 'CloudlessSky82');
+var db = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.USERPASS);
 /* TODO this constructor takes the database name, username, then password.
  * Modify the arguments if you need to */
 

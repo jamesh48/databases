@@ -16,7 +16,7 @@ module.exports = {
             cb(null, JSON.stringify(results));
           }
         )
-        .catch( function(err) {
+        .catch(function(err) {
           cb(err, null);
         });
     },
